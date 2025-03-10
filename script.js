@@ -65,21 +65,21 @@ function calculateResult() {
     }
 }
 
-function checkDevice() {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+// function checkDevice() {
+//     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    if (/android/i.test(userAgent)) {
-        // Dispositivo é Android
-        // Opcionalmente, você pode redirecionar o usuário para uma página específica ou ocultar o conteúdo da página
-        document.body.innerHTML = '<h1>Esta página só está disponível para iPhone.</h1>';
-    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        // Dispositivo é iOS
-        // A página está disponível, não precisa fazer nada
-    } else {
-        // Outros dispositivos
-        document.body.innerHTML = '<h1>Esta página só está disponível para iPhone.</h1>';
-    }
-}
+//     if (/android/i.test(userAgent)) {
+//         // Dispositivo é Android
+//         // Opcionalmente, você pode redirecionar o usuário para uma página específica ou ocultar o conteúdo da página
+//         document.body.innerHTML = '<h1>Esta página só está disponível para iPhone.</h1>';
+//     } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+//         // Dispositivo é iOS
+//         // A página está disponível, não precisa fazer nada
+//     } else {
+//         // Outros dispositivos
+//         document.body.innerHTML = '<h1>Esta página só está disponível para iPhone.</h1>';
+//     }
+// }
 
 // Chame a função ao carregar a página
 window.onload = checkDevice;
