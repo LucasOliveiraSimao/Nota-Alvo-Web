@@ -1,11 +1,19 @@
 const { Analytics } = require("@vercel/analytics");
 
+const fs = require('fs');
+const path = require('path');
+
 module.exports = (req, res) => {
-  // Serve conteúdo para a rota raiz
   if (req.method === 'GET' && req.url === '/') {
-    // Se quiser servir arquivo HTML da pasta public, pode ler com fs
-    // Ou só enviar uma resposta simples como exemplo:
-    res.status(200).send('<h1>Olá, servidor serverless na Vercel!</h1>');
+    const filePath = path.join(__dirname, '..', 'public', 'index.html');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        res.status(500).send('Erro ao ler o arquivo');
+        return;
+      }
+      res.setHeader('Content-Type', 'text/html');
+      res.status(200).send(data);
+    });
   } else {
     res.status(404).send('Not Found');
   }
