@@ -4,8 +4,8 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Calculadora Estilo iPhone',
-  description: 'Calculadora de notas para aprovação acadêmica',
+  title: 'Nota Alvo',
+  description: 'Nota Alvo',
 }
 
 export default function RootLayout({
