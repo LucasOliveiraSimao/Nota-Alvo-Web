@@ -1,33 +1,40 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background-color: #d9d9d9;
+    padding: 2vw;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
 .nota-alvo-frame {
-    width: 375px;
-    height: 812px;
+    width: calc(100vw - 4vw);
+    height: calc(100vh - 4vw);
+    max-width: 100%;
     background-color: #fff;
-    border: 16px solid #000;
-    border-radius: 50px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    border: 2vw solid #000;
+    border-radius: 8vw;
+    box-shadow: 0 0 5vw rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40px;
+    justify-content: center;
+    padding: 8vh 3vw 5vh 3vw;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .notch {
-    width: 210px;
-    height: 30px;
+    width: 35vw;
+    height: 4vh;
+    max-width: 210px;
+    max-height: 30px;
+    min-width: 100px;
+    min-height: 20px;
     background-color: #000;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 3vw 3vw;
     position: absolute;
     top: 0;
     left: 50%;
@@ -36,35 +43,43 @@ body {
 
 .calculator {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: 170px repeat(5, 100px); /* primeira linha para o display */
-    gap: 10px;
-    padding: 10px;
-    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto repeat(5, 8vh);
+    gap: 1vw;
+    padding: 2vw;
+    margin-top: 1vh;
+    width: calc(100% - 4vw);
+    max-width: 85vw;
+    flex: 1;
 }
 
 .display {
     grid-column: span 3;
     background-color: #e9e9e9;
-    padding: 20px;              /* aumentado */
+    padding: 2vw;
     text-align: right;
-    font-size: 60px;            /* aumentado */
-    border-radius: 10px;
+    font-size: 5vw;
+    border-radius: 2vw;
     border: 1px solid #ccc;
     word-wrap: break-word;
-    height: 120px;              /* adicionado */
-    display: flex;              /* para alinhar o conteúdo */
-    justify-content: flex-end;  /* conteúdo à direita */
-    align-items: flex-end;      /* conteúdo na parte inferior */
+    height: 9vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 9vh;
 }
 
 button {
-    font-size: 24px;
+    font-size: 4vw;
     background-color: #f2f2f2;
     border: none;
-    border-radius: 10px;
+    border-radius: 2vw;
     cursor: pointer;
     transition: background-color 0.2s;
+    min-height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
@@ -87,5 +102,65 @@ button:active {
 
 .zero {
     grid-column: span 1;
+}
+
+/* Limites para telas muito grandes (desktop) */
+@media screen and (min-width: 768px) {
+    .nota-alvo-frame {
+        max-width: 400px;
+        max-height: 800px;
+        border: 16px solid #000;
+        border-radius: 50px;
+    }
+    
+    .notch {
+        width: 200px;
+        height: 30px;
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .calculator {
+        max-width: 320px;
+        padding: 20px;
+        gap: 10px;
+        grid-template-rows: auto repeat(5, 70px);
+    }
+    
+    .display {
+        font-size: 32px;
+        padding: 20px;
+        border-radius: 15px;
+        height: 100px;
+        min-height: 100px;
+    }
+    
+    button {
+        font-size: 24px;
+        border-radius: 15px;
+        min-height: 60px;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media screen and (max-height: 600px) {
+    .nota-alvo-frame {
+        padding-top: 3vh;
+    }
+    
+    .calculator {
+        grid-template-rows: auto repeat(5, 8vh);
+        margin-top: 2vh;
+    }
+    
+    .display {
+        height: 10vh;
+        min-height: 10vh;
+        font-size: 5vw;
+    }
+    
+    button {
+        min-height: 6vh;
+        font-size: 3.5vw;
+    }
 }
 
