@@ -1,19 +1,12 @@
-const express = require('express');
-const path = require('path');
-import { Analytics } from "@vercel/analytics/next"
+const { Analytics } = require("@vercel/analytics");
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Servir arquivos estáticos da pasta 'public'
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Rota principal para carregar o index.html
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Iniciar o servidor
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+module.exports = (req, res) => {
+  // Serve conteúdo para a rota raiz
+  if (req.method === 'GET' && req.url === '/') {
+    // Se quiser servir arquivo HTML da pasta public, pode ler com fs
+    // Ou só enviar uma resposta simples como exemplo:
+    res.status(200).send('<h1>Olá, servidor serverless na Vercel!</h1>');
+  } else {
+    res.status(404).send('Not Found');
+  }
+};
