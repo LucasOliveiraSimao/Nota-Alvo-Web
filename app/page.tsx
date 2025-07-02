@@ -53,7 +53,7 @@ export default function Calculator() {
   }
 
   return (
-    <div className="iphone-frame">
+    <div className="nota-alvo-frame">
       <div className="notch"></div>
       <div className="calculator">
         <div className="display">{displayValue || '0'}</div>
