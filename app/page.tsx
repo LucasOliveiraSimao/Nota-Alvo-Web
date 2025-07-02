@@ -55,7 +55,8 @@ export default function Calculator() {
   return (
     <div className="nota-alvo-frame">
       <div className="notch"></div>
-      <div className="calculator">
+      <div className="screen">
+        <div className="calculator">
         <div className="display">{displayValue || '0'}</div>
         <button onClick={clearDisplay}>CE</button>
         <button onClick={deleteChar}>←</button>
@@ -75,6 +76,7 @@ export default function Calculator() {
 
         <button onClick={() => appendChar('0')} className="zero">0</button>
         <button onClick={calculateResult} className="equals">=</button>
+        </div>
       </div>
     </div>
   )
