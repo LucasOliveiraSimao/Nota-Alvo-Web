@@ -51,7 +51,7 @@ function calculateResult() {
             alert('Apenas os alunos que obtiverem média igual ou superior a 8.00 estarão dispensados da Prova Final. Alunos com notas abaixo de 8.00 não terão essa dispensa e, caso optem por não realizar a Prova Final, receberão nota zero.');
         }
         else if (inputValue >= 2.5 && inputValue <= 7.49) {
-            alert('A nota necessária para a aprovação na Prova Final é: ' + result.toString());
+            alert('A nota necessária para a aprovação na Prova Final é: ' + result.toFixed(2));
         }
         else {
             alert('Lamentavelmente, as chances de você ser aprovado são inexistentes.');
