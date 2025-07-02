@@ -1,20 +1,19 @@
-const { Analytics } = require("@vercel/analytics");
-
-const fs = require('fs');
+const express = require('express');
 const path = require('path');
+import { Analytics } from "@vercel/analytics/next"
 
-module.exports = (req, res) => {
-  if (req.method === 'GET' && req.url === '/') {
-    const filePath = path.join(__dirname, '..', 'public', 'index.html');
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        res.status(500).send('Erro ao ler o arquivo');
-        return;
-      }
-      res.setHeader('Content-Type', 'text/html');
-      res.status(200).send(data);
-    });
-  } else {
-    res.status(404).send('Not Found');
-  }
-};
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Servir arquivos estáticos da pasta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rota principal para carregar o index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Iniciar o servidor
+app.listen(PORT, () => {
+    console.log(Servidor rodando em http://localhost:${PORT});
+});
